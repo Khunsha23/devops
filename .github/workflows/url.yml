@@ -8,9 +8,9 @@ on:
         required: true
         type: choice
         options:
-          - Production:'Production'
-          - Staging:'Staging'
-          - Development:'Development'
+          - 'Production'
+          - 'Staging'
+          - 'Development'
 env:
   PRODUCTION_URL: "https://production.example.com"
   STAGING_URL: "https://staging.example.com"
