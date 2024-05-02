@@ -11,7 +11,11 @@ on:
           - Production
           - Staging
           - Development
-
+env:
+  PRODUCTION_URL: "https://production.example.com"
+  STAGING_URL: "https://staging.example.com"
+  DEVELOPMENT_URL: "https://development.example.com"
+  
 jobs:
   echo_url:
     runs-on: ubuntu-latest
@@ -24,11 +28,5 @@ jobs:
             echo "Staging URL: $STAGING_URL"
           elif [ "${{inputs.environment }}" = "Development" ]; then
             echo "Development URL: $DEVELOPMENT_URL"
-          else
-            echo "Invalid environment selected"
-            exit 1
           fi
-env:
-  PRODUCTION_URL: "https://production.example.com"
-  STAGING_URL: "https://staging.example.com"
-  DEVELOPMENT_URL: "https://development.example.com"
+
