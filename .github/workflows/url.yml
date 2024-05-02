@@ -1,0 +1,34 @@
+
+name: Echo URL Variable Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose an environment'
+        required: true
+        type: choice
+        options:
+          - Production
+          - Staging
+          - Development
+
+jobs:
+  echo_url:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo URL variable
+        run: |
+          if [ "${{inputs.environment }}" = "Production" ]; then
+            echo "Production URL: $PRODUCTION_URL"
+          elif [ "${{inputs.environment }}" = "Staging" ]; then
+            echo "Staging URL: $STAGING_URL"
+          elif [ "${{inputs.environment }}" = "Development" ]; then
+            echo "Development URL: $DEVELOPMENT_URL"
+          else
+            echo "Invalid environment selected"
+            exit 1
+          fi
+env:
+  PRODUCTION_URL: "https://production.example.com"
+  STAGING_URL: "https://staging.example.com"
+  DEVELOPMENT_URL: "https://development.example.com"
