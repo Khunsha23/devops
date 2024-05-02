@@ -21,11 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          if [ "${{inputs.environment }}" = "Production" ]; then
+          if [ "${{inputs.environment }}" == "Production" ]; then
             echo "Production URL: $PRODUCTION_URL"
-          elif [ "${{inputs.environment }}" = "Staging" ]; then
+          elif [ "${{inputs.environment }}" == "Staging" ]; then
             echo "Staging URL: $STAGING_URL"
-          elif [ "${{inputs.environment }}" = "Development" ]; then
+          elif [ "${{inputs.environment }}" == "Development" ]; then
             echo "Development URL: $DEVELOPMENT_URL"
           fi
 
