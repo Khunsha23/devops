@@ -1,0 +1,26 @@
+
+name: Echo URL Variable Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      inp_env:
+        description: 'Choose an environment'
+        required: true
+        type: choice
+        options:
+          - 'Production'
+          - 'Staging'
+          - 'Development'
+  
+jobs:
+  echo_url:
+    runs-on: ubuntu-latest
+    environment: 
+            name: ${{ github.event.inputs.inp_env }}
+    steps:
+      - name: Echo Environment Variable
+        run: echo "The Value is $URL"
+        env:
+          URL: ${{ vars.URL }}
+
+
